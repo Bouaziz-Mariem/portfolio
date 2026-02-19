@@ -1,0 +1,114 @@
+
+
+
+
+
+
+
+
+
+################### RAW DATA
+
+ISO dqs
+21001: 2018
+
+North American University Co.
+SFAX TUNISIA
+
+TECHNOLOGY . BUSINESS . ARCHITECTURE
+
+IIT International Institute of Technology
+ISA
+ISB International School of Business
+NAU American Training Institute
+
+We inspire minds
+
+Accrédité par
+Euro-Inf
+ASIIN
+EUR-ACE
+
+Certificat de Mérite
+
+Cette attestation de distinction est décernée avec immense fierté à
+
+Mariem Bouaziz
+
+À l'honneur de votre parcours académique exceptionnel durant l'année universitaire
+2024-2025,
+nous saluons votre travail acharné, votre engagement exemplaire et votre persévérance inébranlable.
+Que vos projets futurs soient couronnés de succès éclatants.
+
+01/08/2025
+DATE
+
+Directeur académique
+SIGNATURE
+
+
+
+
+################### FIELD NAMES (suggested)
+
+organization_full_name: North American University Co.
+
+organization_short_name: NAU
+
+campus_location: SFAX TUNISIA
+
+institution_slogan: We inspire minds
+
+organization_domains: Technology · Business · Architecture
+
+sub_institutions:
+
+IIT – International Institute of Technology
+
+ISA
+
+ISB – International School of Business
+
+NAU – American Training Institute
+
+accreditation_bodies:
+
+Euro-Inf
+
+ASIIN
+
+EUR-ACE
+
+iso_certification: ISO 21001:2018
+
+document_type: Certificat de Mérite
+
+recipient_name: Mariem Bouaziz
+
+academic_year: 2024-2025
+
+issue_date: 01/08/2025
+
+signatory_title: Directeur académique
+
+signature_label: SIGNATURE
+
+date_label: DATE
+
+certificate_purpose: Attestation de distinction pour parcours académique exceptionnel
+
+recognition_statement: Nous saluons votre travail acharné, votre engagement exemplaire et votre persévérance inébranlable.
+
+closing_statement: Que vos projets futurs soient couronnés de succès éclatants.
+
+
+
+
+
+
+
+
+
+
+
+

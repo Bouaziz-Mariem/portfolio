@@ -1,0 +1,82 @@
+
+
+
+
+
+
+
+
+
+################### RAW DATA
+
+2025
+
+Certificate of IEEE Membership
+
+This certificate recognizes
+
+Mariem Bouaziz
+
+as a Student Member in good standing through December 2025, denoting
+a personal and professional commitment to the advancement of technology
+
+You are in the company of innovators worldwide, like
+2024 Medal of Honor Recipient
+
+Robert E. Kahn
+(LFIEEE)—President and CEO of the Corporation for National Research Initiatives
+
+“For pioneering technical and leadership contributions in packet communication technologies and foundations of the Internet.”
+
+Kathleen A. Kramer, 2025 IEEE President
+
+IEEE
+Advancing Technology for Humanity
+
+
+
+
+################### FIELD NAMES
+
+document_type: Certificate of IEEE Membership
+
+certificate_year: 2025
+
+organization_name: IEEE
+
+organization_tagline: Advancing Technology for Humanity
+
+recipient_name: Mariem Bouaziz
+
+membership_type: Student Member
+
+membership_status: In good standing
+
+membership_valid_through: December 2025
+
+recognition_statement: This certificate recognizes
+
+membership_description: Personal and professional commitment to the advancement of technology
+
+signatory_name: Kathleen A. Kramer
+
+signatory_title: 2025 IEEE President
+
+featured_person_name: Robert E. Kahn
+
+featured_person_title: LFIEEE — President and CEO of the Corporation for National Research Initiatives
+
+featured_award: 2024 Medal of Honor Recipient
+
+featured_quote: For pioneering technical and leadership contributions in packet communication technologies and foundations of the Internet.
+
+
+
+
+
+
+
+
+
+
+

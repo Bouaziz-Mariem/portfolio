@@ -1,0 +1,135 @@
+<section id="projects" class="snap-section relative flex items-center overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(108,60,225,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(108,60,225,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface to-transparent"></div>
+    <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px]"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-card/60 border border-accent/20 mb-4 backdrop-blur-sm">
+        <span class="font-mono text-xs text-accent">&lt;projects&gt;</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <span class="text-text-primary">Featured </span>
+        <span class="text-gradient">Projects</span>
+      </h2>
+      <p class="text-text-secondary font-body max-w-xl mx-auto">
+        A curated selection of projects showcasing my expertise in web development and AI integration.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+      <!-- Project Cards (Left) -->
+      <div class="lg:col-span-5 flex flex-col gap-3">
+        @for (project of projects; track project.title; let i = $index) {
+          <button
+            (click)="setActive(i)"
+            class="group w-full text-left p-4 rounded-xl border transition-all duration-400 cursor-pointer"
+            [class]="activeProject() === i
+              ? 'bg-surface-card border-primary/30 shadow-md'
+              : 'bg-transparent border-transparent hover:bg-surface-card/60 hover:border-primary/10'"
+          >
+            <div class="flex items-center gap-4">
+              <!-- Project number -->
+              <span
+                class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center font-mono text-sm transition-all duration-300"
+                [class]="activeProject() === i ? 'text-white' : 'bg-surface-card text-text-secondary'"
+                [style.background]="activeProject() === i ? project.gradient : ''"
+              >
+                0{{ i + 1 }}
+              </span>
+
+              <div class="min-w-0">
+                <h3
+                  class="font-semibold text-sm sm:text-base transition-colors duration-300 truncate"
+                  [class]="activeProject() === i ? 'text-text-primary' : 'text-text-secondary'"
+                >
+                  {{ project.title }}
+                </h3>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  @for (tag of project.tags.slice(0, 2); track tag) {
+                    <span class="font-mono text-[10px] text-text-secondary/60">{{ tag }}</span>
+                    @if (!$last) {
+                      <span class="text-primary/30 text-[10px]">·</span>
+                    }
+                  }
+                </div>
+              </div>
+
+              <!-- Arrow -->
+              <svg
+                class="w-4 h-4 ml-auto flex-shrink-0 transition-all duration-300"
+                [class]="activeProject() === i ? 'text-accent translate-x-0 opacity-100' : 'text-transparent -translate-x-2 opacity-0'"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </button>
+        }
+      </div>
+
+      <!-- Active Project Details (Right) -->
+      <div class="lg:col-span-7">
+        <div class="rounded-2xl border border-primary/15 bg-surface-card shadow-lg backdrop-blur-sm overflow-hidden">
+          <!-- Project preview area -->
+          <div class="relative h-48 sm:h-56 flex items-center justify-center" [style.background]="active.gradient">
+            <!-- Decorative pattern overlay -->
+            <div class="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.1)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.1)_50%,rgba(0,0,0,0.1)_75%,transparent_75%)] bg-[size:20px_20px] opacity-20"></div>
+            <span class="text-6xl relative z-10">{{ active.icon }}</span>
+            <!-- Project number watermark -->
+            <span class="absolute bottom-4 right-6 font-mono text-white/10 text-8xl font-bold">
+              0{{ activeProject() + 1 }}
+            </span>
+          </div>
+
+          <!-- Project info -->
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold text-text-primary mb-3">
+              {{ active.title }}
+            </h3>
+            <p class="text-text-secondary font-body text-sm leading-relaxed mb-6">
+              {{ active.description }}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              @for (tag of active.tags; track tag) {
+                <span class="px-3 py-1 rounded-full text-xs font-mono bg-primary/10 text-primary border border-primary/20">
+                  {{ tag }}
+                </span>
+              }
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-3">
+              <a [href]="active.link"
+                class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold
+                       bg-gradient-to-r from-primary to-primary-light text-white
+                       hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+              >
+                View Project
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+              <a [href]="active.link"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold
+                       border border-primary/20 text-text-secondary hover:text-text-primary
+                       hover:border-primary/40 transition-all duration-300"
+              >
+                <span class="font-mono text-xs text-accent">&lt;/&gt;</span>
+                Source
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

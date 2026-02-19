@@ -1,0 +1,90 @@
+<section id="skills" class="snap-section relative flex items-center overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(224,69,155,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(224,69,155,0.04)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface to-transparent"></div>
+    <div class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px]"></div>
+    <div class="absolute -bottom-40 left-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px]"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-card/60 border border-primary/20 mb-4 backdrop-blur-sm">
+        <span class="font-mono text-xs text-primary">#skills</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <span class="text-text-primary">My </span>
+        <span class="text-gradient">Tech Stack</span>
+      </h2>
+      <p class="text-text-secondary font-body max-w-xl mx-auto">
+        Technologies and tools I use to bring ideas to life — from pixel-perfect frontends to intelligent backends.
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      @for (category of categories; track category.title) {
+        <div class="group rounded-2xl border bg-surface-card/70 backdrop-blur-sm p-6
+                    hover:bg-surface-card hover:shadow-lg transition-all duration-400"
+             [class]="category.borderColor">
+          <!-- Category header -->
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-10 h-10 rounded-xl bg-surface/80 border flex items-center justify-center font-mono text-sm"
+                  [class]="category.borderColor + ' ' + category.accentColor"
+                  [innerHTML]="category.icon">
+            </span>
+            <h3 class="font-semibold text-text-primary text-sm">{{ category.title }}</h3>
+          </div>
+
+          <!-- Skills list -->
+          <div class="space-y-4">
+            @for (skill of category.skills; track skill.name) {
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <span class="text-xs font-body text-text-secondary">{{ skill.name }}</span>
+                  <span class="font-mono text-[10px]" [class]="category.accentColor">{{ skill.level }}%</span>
+                </div>
+                <!-- Progress bar -->
+                <div class="h-1.5 rounded-full bg-surface-light overflow-hidden">
+                  <div
+                    class="h-full rounded-full bg-gradient-to-r from-primary-light to-accent transition-all duration-700 ease-out"
+                    [style.width.%]="skill.level"
+                  ></div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Category total -->
+          <div class="mt-6 pt-4 border-t border-text-primary/10 flex items-center justify-between">
+            <span class="font-mono text-[10px] text-text-secondary/50 uppercase tracking-wider">proficiency</span>
+            <span class="font-mono text-xs" [class]="category.accentColor">
+              {{ category.skills.length }} skills
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Bottom decoration: terminal-style summary -->
+    <div class="mt-12 max-w-2xl mx-auto">
+      <div class="rounded-xl bg-[#1E1133] border border-primary/20 p-5 font-mono text-xs shadow-lg">
+        <div class="flex items-center gap-2 mb-3 pb-3 border-b border-white/10">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-green-400/80"></span>
+          <span class="ml-2 text-white/30">skills.summary</span>
+        </div>
+        <div class="space-y-1 text-white/60">
+          <p><span class="text-pink-400">const&nbsp;</span> <span class="text-violet-400">developer</span> = &#123;</p>
+          <p class="pl-4"><span class="text-emerald-400">passion</span>: <span class="text-amber-300">"Web Development & AI"</span>,</p>
+          <p class="pl-4"><span class="text-emerald-400">learning</span>: <span class="text-amber-300">"Always"</span>,</p>
+          <p class="pl-4"><span class="text-emerald-400">goal</span>: <span class="text-amber-300">"Global Impact through Tech"</span></p>
+          <p>&#125;;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

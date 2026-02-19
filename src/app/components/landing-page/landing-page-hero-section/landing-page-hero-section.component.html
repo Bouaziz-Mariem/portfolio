@@ -1,0 +1,138 @@
+<section id="hero" class="snap-section relative flex items-center justify-center overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Grid pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(108,60,225,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(108,60,225,0.06)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+
+    <!-- Gradient orbs -->
+    <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow"></div>
+    <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent/10 rounded-full blur-[100px] animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-dark/5 rounded-full blur-[150px]"></div>
+
+    <!-- Floating code snippets -->
+    <div class="absolute top-27 left-[10%] font-mono text-xs text-primary/40 animate-float">
+      &lt;div class="portfolio"&gt;
+    </div>
+    <div class="absolute bottom-32 right-[15%] font-mono text-xs text-accent/35 animate-float" style="animation-delay: 2s;">
+      const ai = await model.predict();
+    </div>
+    <div class="absolute top-1/3 right-[8%] font-mono text-xs text-primary-light/30 animate-float" style="animation-delay: 4s;">
+      import &#123; Brain &#125; from 'neural';
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Left: Text Content -->
+    <div class="order-2 lg:order-1 text-center lg:text-left">
+      <!-- Terminal-style greeting -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-card/60 border border-primary/20 mb-6 mt-16 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        <span class="font-mono text-xs text-text-secondary">ready to innovate</span>
+      </div>
+
+      <!-- Name -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+        <span class="text-text-primary">Hi, I'm</span>
+        <br>
+        <span class="text-gradient">Mariem Bouaziz</span>
+      </h1>
+
+      <!-- Role -->
+      <p class="text-lg sm:text-xl text-text-secondary font-body mb-2">
+        Software Developer <span class="text-accent">&</span> AI Enthusiast
+      </p>
+
+      <!-- Typewriter -->
+      <div class="h-8 mb-8 flex items-center justify-center lg:justify-start">
+        <span class="font-mono text-sm text-primary">
+          <span class="text-accent mr-2">&gt;</span>{{ typedText() }}<span class="cursor-blink text-accent">|</span>
+        </span>
+      </div>
+
+      <!-- Bio -->
+      <p class="text-text-secondary/80 font-body leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+        Passionate about creating elegant digital experiences at the intersection
+        of <span class="text-primary-light">web development</span> and
+        <span class="text-accent">artificial intelligence</span>.
+        Seeking to bring innovation to a global academic community.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+        <a href="#projects"
+          class="group px-6 py-3 rounded-xl font-semibold text-sm
+                 bg-gradient-to-r from-primary to-primary-light text-white
+                 hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all duration-300 hover:scale-105
+                 flex items-center gap-2"
+        >
+          <span class="font-mono text-accent-light text-xs">{{ '{' }}</span>
+          View My Work
+          <span class="font-mono text-accent-light text-xs">{{ '}' }}</span>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="#skills"
+          class="px-6 py-3 rounded-xl font-semibold text-sm
+                 border border-primary/30 text-text-primary
+                 hover:border-accent/50 hover:bg-surface-card/50 transition-all duration-300
+                 flex items-center gap-2 backdrop-blur-sm"
+        >
+          <span class="font-mono text-accent text-xs">#</span>
+          My Skills
+        </a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="flex gap-8 mt-10 justify-center lg:justify-start">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gradient">10+</div>
+          <div class="text-xs text-text-secondary font-mono uppercase tracking-wider">Projects</div>
+        </div>
+        <div class="w-px bg-primary/20"></div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gradient">3+</div>
+          <div class="text-xs text-text-secondary font-mono uppercase tracking-wider">Years Exp</div>
+        </div>
+        <div class="w-px bg-primary/20"></div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gradient">AI</div>
+          <div class="text-xs text-text-secondary font-mono uppercase tracking-wider">Focused</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Visual / Avatar area -->
+    <div class="order-1 lg:order-2 flex justify-center">
+      <div class="relative">
+        <!-- Decorative ring -->
+        <div class="absolute -inset-4 rounded-full bg-gradient-to-br from-primary/20 via-transparent to-accent/20 animate-[spin_20s_linear_infinite]"></div>
+
+        <!-- Avatar container -->
+        <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden gradient-border">
+          <img src="profile-photo.png" alt="Mariem Bouaziz" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Floating badges -->
+        <div class="absolute -top-2 -right-2 px-3 py-1.5 rounded-lg bg-surface-card/90 border border-primary/30 backdrop-blur-sm animate-float">
+          <span class="font-mono text-xs text-primary-light">Angular</span>
+        </div>
+        <div class="absolute bottom-4 -left-6 px-3 py-1.5 rounded-lg bg-surface-card/90 border border-accent/30 backdrop-blur-sm animate-float" style="animation-delay: 1s;">
+          <span class="font-mono text-xs text-accent">AI / ML</span>
+        </div>
+        <div class="absolute top-1/2 -right-8 px-3 py-1.5 rounded-lg bg-surface-card/90 border border-primary/30 backdrop-blur-sm animate-float" style="animation-delay: 3s;">
+          <span class="font-mono text-xs text-primary-light">Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+    <span class="font-mono text-xs text-text-secondary/40">scroll</span>
+    <svg class="w-5 h-5 text-text-secondary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/>
+    </svg>
+  </div>
+</section>

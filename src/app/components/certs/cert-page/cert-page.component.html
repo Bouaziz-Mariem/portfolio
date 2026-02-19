@@ -1,0 +1,157 @@
+@if (cert(); as c) {
+<div class="min-h-screen bg-surface relative overflow-hidden">
+
+  <!-- Background decorations -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(108,60,225,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(108,60,225,0.04)_1px,transparent_1px)] bg-[size:55px_55px]"></div>
+    <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full blur-[180px] opacity-60" [style.background]="c.accent + '15'"></div>
+    <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px]"></div>
+  </div>
+
+  <!-- Top bar -->
+  <nav class="relative z-20 flex items-center justify-between px-6 sm:px-10 py-5">
+    <button
+      (click)="goBack()"
+      class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium
+             bg-surface-card/80 border border-text-primary/10 text-text-secondary backdrop-blur-sm
+             hover:border-primary/30 hover:text-primary transition-all duration-200 cursor-pointer"
+    >
+      <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Back to Portfolio
+    </button>
+
+    <!-- Cert type badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border backdrop-blur-sm"
+         [style.border-color]="c.accent + '40'"
+         [style.background]="c.accent + '10'">
+      <span class="text-sm">{{ c.icon }}</span>
+      <span class="font-mono text-xs" [style.color]="c.accent">{{ c.documentType }}</span>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 pb-20">
+
+    <!-- Hero header -->
+    <div class="text-center mb-10 pt-4">
+      <!-- Icon -->
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl text-4xl mb-5 bg-surface-card shadow-lg border-2"
+           [style.border-color]="c.accent"
+           [style.box-shadow]="'0 0 30px ' + c.accent + '20'">
+        {{ c.icon }}
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-3">
+        {{ certsService.getTitle(c) }}
+      </h1>
+
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-2">
+        <span class="text-lg text-text-secondary font-medium">{{ certsService.getFullOrganization(c) }}</span>
+        @if (certsService.getDate(c)) {
+          <span class="text-text-secondary/30">|</span>
+          <span class="font-mono text-sm text-text-secondary/60">{{ certsService.getDate(c) }}</span>
+        }
+      </div>
+      <p class="text-text-secondary/70 font-body max-w-xl mx-auto">{{ certsService.getSubtitle(c) }}</p>
+    </div>
+
+    <!-- Certificate image — the star of the show -->
+    <div class="relative mb-12">
+      <!-- Decorative accent line behind image -->
+      <div class="absolute -inset-1 rounded-3xl opacity-30 blur-sm" [style.background]="c.color"></div>
+
+      <div
+        class="relative rounded-2xl overflow-hidden bg-surface-card border border-text-primary/10 shadow-xl cursor-pointer transition-all duration-500"
+        [class]="imageExpanded() ? 'max-w-full' : 'max-w-4xl mx-auto'"
+        (click)="toggleImage()"
+      >
+        <!-- Accent strip top -->
+        <div class="h-1.5" [style.background]="c.color"></div>
+
+        <!-- Image -->
+        <div class="relative bg-white p-3 sm:p-5">
+          <img
+            [src]="c.imagePath"
+            [alt]="certsService.getTitle(c)"
+            class="w-full rounded-lg transition-all duration-500"
+            [class]="imageExpanded() ? 'max-h-none' : 'max-h-[70vh] object-contain mx-auto'"
+          />
+
+          <!-- Expand hint -->
+          <div class="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-text-primary/70 text-white text-xs font-mono backdrop-blur-sm opacity-60 hover:opacity-100 transition-opacity">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              @if (imageExpanded()) {
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              } @else {
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
+              }
+            </svg>
+            {{ imageExpanded() ? 'Collapse' : 'Click to expand' }}
+          </div>
+        </div>
+
+        <!-- Accent strip bottom -->
+        <div class="h-1.5" [style.background]="c.color"></div>
+      </div>
+    </div>
+
+    <!-- Details grid -->
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="h-px flex-1 bg-text-primary/10"></div>
+        <span class="font-mono text-xs text-text-secondary/50 uppercase tracking-widest">Certificate Details</span>
+        <div class="h-px flex-1 bg-text-primary/10"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3">
+        @for (detail of getDetails(c); track detail.label) {
+          <div class="group px-4 py-3 rounded-xl bg-surface-card/70 border border-text-primary/8
+                      hover:border-primary/20 hover:bg-surface-card transition-all duration-200">
+            <p class="font-mono text-[10px] text-text-secondary/50 uppercase tracking-widest mb-1">{{ detail.label }}</p>
+            @if (detail.label === 'Digital Badge') {
+              <a [href]="detail.value" target="_blank"
+                 class="text-sm text-primary font-medium hover:underline break-all">
+                {{ detail.value }}
+              </a>
+            } @else {
+              <p class="text-sm text-text-primary font-medium leading-snug">{{ detail.value }}</p>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Bottom actions -->
+    <div class="max-w-4xl mx-auto mt-10 flex flex-wrap items-center justify-between gap-4">
+      <button
+        (click)="goBack()"
+        class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold
+               border border-text-primary/10 text-text-secondary
+               hover:border-primary/30 hover:text-primary transition-all duration-200 cursor-pointer"
+      >
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        All Certificates
+      </button>
+
+      @if (c.digitalBadgeUrl) {
+        <a
+          [href]="c.digitalBadgeUrl"
+          target="_blank"
+          class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold
+                 bg-gradient-to-r from-primary to-primary-light text-white
+                 hover:shadow-[0_0_20px_rgba(108,60,225,0.25)] transition-all duration-300"
+        >
+          Verify on {{ c.badgePlatform ?? 'Badge Platform' }}
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      }
+    </div>
+  </div>
+</div>
+}

@@ -1,0 +1,87 @@
+
+
+
+
+
+
+
+
+
+################### RAW DATA
+
+4ST
+SOCIÉTÉ SMART SUSTAINABLE SOLUTIONS AND TRAININGS
+
+CERTIFICAT DE FORMATION
+
+L’organisme de formation Ste Smart Sustainable Solutions & Trainings 4ST
+inscrit sous le N° 6138820 atteste par la présente que
+
+Mariem Bouaziz
+
+A suivi une formation d’une durée de 3 heures animée par
+Mr Mohamed Hedi ALLOUCHE intitulée
+
+Leadership et Gestion d’Équipe
+
+24 NOVEMBRE
+2024
+
+Signature
+
+Mohamed Hedi ALLOUCHE
+Ingénieur Formateur
++216 27 034 297
+mohamed.hedi.allouche@gmail.com
+
+4ST
+TRAINING DEPARTMENT
+
+(Stamp text)
+4ST
+شركة الحلول و التدريبات
++216 93 044 449
+
+
+
+
+################### FIELD NAMES
+
+organization_short_name: 4ST
+organization_full_name: SOCIÉTÉ SMART SUSTAINABLE SOLUTIONS AND TRAININGS
+
+document_type: CERTIFICAT DE FORMATION
+
+organization_legal_name: Ste Smart Sustainable Solutions & Trainings 4ST
+registration_number: 6138820
+
+recipient_name: Mariem Bouaziz
+
+training_duration: 3 heures
+trainer_name: Mr Mohamed Hedi ALLOUCHE
+training_title: Leadership et Gestion d’Équipe
+
+event_date: 24 Novembre 2024
+
+trainer_title: Ingénieur Formateur
+trainer_phone: +216 27 034 297
+trainer_email: mohamed.hedi.allouche@gmail.com
+
+department_name: TRAINING DEPARTMENT
+
+stamp_company_name: 4ST
+stamp_arabic_name: شركة الحلول و التدريبات
+stamp_phone: +216 93 044 449
+
+signature_label: Signature
+
+
+
+
+
+
+
+
+
+
+

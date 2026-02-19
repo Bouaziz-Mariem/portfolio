@@ -1,0 +1,91 @@
+
+
+
+
+
+
+
+
+
+################### RAW DATA
+
+
+UFEC
+UNION DES FUTURS EXPERTS COMPTABLES
+
+ÉCOLE SUPÉRIEURE DE COMMERCE
+Sfax
+
+ATTESTATION
+
+CLUB UNION DES FUTURS EXPERTS COMPTABLES ATTESTE QUE
+
+Mariem BOUAZIZ
+
+A suivi le séminaire intitulé :
+
+“LA GESTION INTELLIGENTE GRÂCE À LA BI”
+
+Qui a eu lieu le 13 décembre 2025 à hôtel Palais Royal-sfax
+
+M. ANIS BEN AMAR
+DIRECTEUR DE L’ESC
+
+École Supérieure de Commerce
+Université de Sfax
+
+MME NOUR LOULOU
+PRÉSIDENTE DU CLUB
+
+UFEC
+SINCE 2014
+
+Scanné avec CamScanner
+
+
+
+
+################### FIELD NAMES
+
+organization_short_name: UFEC
+organization_full_name: UNION DES FUTURS EXPERTS COMPTABLES
+
+partner_institution: ÉCOLE SUPÉRIEURE DE COMMERCE
+institution_city: Sfax
+
+document_type: ATTESTATION
+
+issuing_club: CLUB UNION DES FUTURS EXPERTS COMPTABLES
+
+recipient_name: Mariem BOUAZIZ
+
+seminar_title: LA GESTION INTELLIGENTE GRÂCE À LA BI
+
+event_date: 13 décembre 2025
+event_location: hôtel Palais Royal-sfax
+
+director_name: M. ANIS BEN AMAR
+director_title: DIRECTEUR DE L’ESC
+
+university_name: Université de Sfax
+
+president_name: MME NOUR LOULOU
+president_title: PRÉSIDENTE DU CLUB
+
+organization_since: SINCE 2014
+
+scan_note: Scanné avec CamScanner
+
+
+
+
+
+
+
+
+
+
+
+
+
+

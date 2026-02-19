@@ -1,0 +1,186 @@
+<section id="certs" class="snap-section relative flex items-center overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(108,60,225,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(108,60,225,0.04)_1px,transparent_1px)] bg-[size:55px_55px]"></div>
+    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface to-transparent"></div>
+    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px]"></div>
+    <div class="absolute -bottom-40 -right-40 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px]"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-card/60 border border-accent/20 mb-4 backdrop-blur-sm">
+        <span class="font-mono text-xs text-accent">★ certs</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <span class="text-text-primary">Certifications &amp; </span>
+        <span class="text-gradient">Credentials</span>
+      </h2>
+      <p class="text-text-secondary font-body max-w-xl mx-auto">
+        Recognized achievements from leading institutions, validating expertise across cloud, engineering, and leadership.
+      </p>
+    </div>
+
+    <!-- Layout: cert cards grid + active detail -->
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+
+      <!-- Left: cert cards grid -->
+      <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+        @for (cert of certs; track cert.imagePath; let i = $index) {
+          <button
+            (click)="setActive(i)"
+            class="group relative text-left rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden"
+            [class]="activeCert() === i
+              ? 'bg-surface-card border-transparent shadow-md'
+              : 'bg-surface-card/50 border-text-primary/8 hover:bg-surface-card hover:shadow-sm hover:border-primary/15'"
+          >
+            <!-- Active indicator stripe -->
+            @if (activeCert() === i) {
+              <span
+                class="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl z-10"
+                [style.background]="cert.color"
+              ></span>
+            }
+
+            <!-- Thumbnail -->
+            <div class="w-full aspect-[4/3] overflow-hidden bg-surface-light">
+              <img
+                [src]="cert.imagePath"
+                [alt]="getTitle(cert)"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+
+            <!-- Card text -->
+            <div class="p-3">
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="text-sm">{{ cert.icon }}</span>
+                <span class="font-mono text-[10px] text-text-secondary/50 truncate">{{ getOrganization(cert) }}</span>
+              </div>
+              <h4
+                class="font-semibold text-xs leading-tight transition-colors duration-300 line-clamp-2"
+                [class]="activeCert() === i ? 'text-text-primary' : 'text-text-secondary'"
+              >{{ getTitle(cert) }}</h4>
+            </div>
+          </button>
+        }
+      </div>
+
+      <!-- Right: active cert detail -->
+      <div class="lg:col-span-7">
+        <div class="relative rounded-2xl border border-primary/12 bg-surface-card shadow-lg overflow-hidden">
+
+          <!-- Right-edge gradient accent bar -->
+          <div class="absolute right-0 top-0 bottom-0 w-2 rounded-r-2xl" [style.background]="active.color"></div>
+
+          <!-- Body -->
+          <div class="p-6 sm:p-8 pr-8 sm:pr-10">
+
+            <!-- Header: icon + title + org -->
+            <div class="flex items-start gap-4 mb-5">
+              <!-- Icon badge -->
+              <span
+                class="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-sm border-2 bg-surface-light"
+                [style.border-color]="active.accent"
+                [style.box-shadow]="'0 0 12px ' + active.accent + '22'"
+              >{{ active.icon }}</span>
+
+              <div class="min-w-0 flex-1">
+                <p class="font-mono text-[10px] text-text-secondary/50 uppercase tracking-widest mb-1">{{ active.documentType }}</p>
+                <h3 class="text-lg sm:text-xl font-bold text-text-primary leading-tight mb-2">{{ getTitle(active) }}</h3>
+                <!-- Org + date inline -->
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-5 h-5 rounded-md bg-surface-light flex items-center justify-center font-mono text-[10px] text-primary font-semibold">
+                      {{ getOrganization(active).charAt(0) }}
+                    </span>
+                    <span class="text-sm text-text-secondary font-medium">{{ getOrganization(active) }}</span>
+                  </div>
+                  @if (getDate(active)) {
+                    <span class="text-text-secondary/20">|</span>
+                    <div class="flex items-center gap-1">
+                      <svg class="w-3 h-3 text-text-secondary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span class="font-mono text-xs text-text-secondary/50">{{ getDate(active) }}</span>
+                    </div>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Thumbnail preview -->
+            <div class="rounded-xl overflow-hidden border border-text-primary/8 mb-5 bg-surface-light">
+              <img
+                [src]="active.imagePath"
+                [alt]="getTitle(active)"
+                class="w-full h-48 sm:h-56 object-contain"
+              />
+            </div>
+
+            <!-- Subtitle / description -->
+            <p class="text-sm text-text-secondary font-body mb-5 leading-relaxed">{{ getSubtitle(active) }}</p>
+
+            <!-- Digital badge link (if available) -->
+            @if (active.digitalBadgeUrl) {
+              <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-light/60 border border-text-primary/8 mb-5">
+                <svg class="w-3.5 h-3.5 text-primary/60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                </svg>
+                <span class="font-mono text-[11px] text-text-secondary/60">Digital Badge:</span>
+                <a [href]="active.digitalBadgeUrl" target="_blank" class="font-mono text-[11px] text-primary font-medium hover:underline truncate">{{ active.badgePlatform ?? 'View' }}</a>
+              </div>
+            }
+
+            <!-- Actions -->
+            <div class="flex gap-3 items-center">
+              <!-- More Details button -->
+              <button
+                (click)="viewDetails()"
+                class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold
+                       bg-gradient-to-r from-primary to-primary-light text-white
+                       hover:shadow-[0_0_20px_rgba(108,60,225,0.25)] transition-all duration-300 cursor-pointer"
+              >
+                More Details
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </button>
+
+              <!-- Counter -->
+              <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-text-primary/10 text-text-secondary text-sm">
+                <span class="font-mono text-[11px] text-text-secondary/50">{{ activeCert() + 1 }}</span>
+                <span class="text-text-secondary/30">/</span>
+                <span class="font-mono text-[11px] text-text-secondary/50">{{ certs.length }}</span>
+              </div>
+
+              <!-- Prev / Next -->
+              <div class="ml-auto flex gap-2">
+                <button
+                  (click)="setActive((activeCert() - 1 + certs.length) % certs.length)"
+                  class="w-9 h-9 rounded-xl border border-text-primary/10 flex items-center justify-center text-text-secondary
+                         hover:border-primary/30 hover:text-primary transition-all duration-200 cursor-pointer"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <button
+                  (click)="setActive((activeCert() + 1) % certs.length)"
+                  class="w-9 h-9 rounded-xl border border-text-primary/10 flex items-center justify-center text-text-secondary
+                         hover:border-primary/30 hover:text-primary transition-all duration-200 cursor-pointer"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

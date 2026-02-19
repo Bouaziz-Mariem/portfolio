@@ -1,0 +1,113 @@
+<!-- Fixed Side Navigation (Desktop) - Dot-style vertical nav on the right -->
+<nav class="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-6">
+  @for (section of sections; track section.id) {
+    <button
+      (click)="scrollTo(section.id)"
+      class="group relative flex items-center gap-3 cursor-pointer"
+    >
+      <!-- Label tooltip -->
+      <span
+        class="absolute right-10 px-3 py-1 rounded-lg text-sm font-mono whitespace-nowrap
+               bg-surface-card/90 text-text-secondary backdrop-blur-sm border border-primary/20
+               opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0
+               transition-all duration-300 pointer-events-none"
+      >
+        <span class="text-accent font-light mr-1">{{ section.icon }}</span>{{ section.label }}
+      </span>
+
+      <!-- Dot indicator -->
+      <span
+        class="w-3 h-3 rounded-full border-2 transition-all duration-300"
+        [class]="activeSection() === section.id
+          ? 'bg-accent border-accent shadow-[0_0_12px_rgba(224,69,155,0.4)] scale-125'
+          : 'bg-transparent border-text-secondary/40 group-hover:border-primary-light group-hover:scale-110'"
+      ></span>
+    </button>
+  }
+
+  <!-- Vertical line connecting dots -->
+  <div class="absolute top-0 bottom-0 right-[5px] w-px bg-gradient-to-b from-transparent via-text-secondary/20 to-transparent -z-10"></div>
+</nav>
+
+<!-- Top Navigation Bar (Desktop + Mobile) -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+    <!-- Logo / Brand -->
+    <a (click)="scrollTo('hero')" class="flex items-center gap-2 cursor-pointer group">
+      <span class="font-mono text-lg text-accent group-hover:text-primary-light transition-colors duration-300">&lt;</span>
+      <span class="font-sans font-semibold text-lg text-text-primary tracking-wide">Portfolio</span>
+      <span class="font-mono text-lg text-accent group-hover:text-primary-light transition-colors duration-300">/&gt;</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="hidden lg:flex items-center gap-8">
+      @for (section of sections; track section.id) {
+        <button
+          (click)="scrollTo(section.id)"
+          class="relative font-body text-sm tracking-wider uppercase transition-colors duration-300 cursor-pointer"
+          [class]="activeSection() === section.id ? 'text-accent' : 'text-text-secondary hover:text-text-primary'"
+        >
+          <span class="font-mono text-accent/60 mr-1">{{ section.icon }}</span>{{ section.label }}
+          @if (activeSection() === section.id) {
+            <span class="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-primary-light to-accent"></span>
+          }
+        </button>
+      }
+    </div>
+
+    <!-- CTA Button (Desktop) -->
+    <a
+      href="mailto:contact&#64;portfolio.dev"
+      class="hidden lg:flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold
+             bg-gradient-to-r from-primary to-accent text-white
+             hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all duration-300 hover:scale-105"
+    >
+      <span class="font-mono text-xs">$</span> Contact Me
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button
+      (click)="toggleMobileMenu()"
+      class="lg:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
+    >
+      <span
+        class="block w-6 h-0.5 bg-text-primary transition-all duration-300"
+        [class.rotate-45]="mobileMenuOpen()"
+        [class.translate-y-2]="mobileMenuOpen()"
+      ></span>
+      <span
+        class="block w-6 h-0.5 bg-accent transition-all duration-300"
+        [class.opacity-0]="mobileMenuOpen()"
+      ></span>
+      <span
+        class="block w-6 h-0.5 bg-text-primary transition-all duration-300"
+        [class.-rotate-45]="mobileMenuOpen()"
+        [class.-translate-y-2]="mobileMenuOpen()"
+      ></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  @if (mobileMenuOpen()) {
+    <div class="lg:hidden fixed inset-0 top-16 bg-surface/95 backdrop-blur-xl animate-fade-in-up">
+      <div class="flex flex-col items-center justify-center h-full gap-8 stagger-children">
+        @for (section of sections; track section.id) {
+          <button
+            (click)="scrollTo(section.id)"
+            class="text-2xl font-sans font-semibold tracking-wider cursor-pointer transition-colors duration-300"
+            [class]="activeSection() === section.id ? 'text-accent' : 'text-text-secondary hover:text-text-primary'"
+          >
+            <span class="font-mono text-accent/60 mr-2 text-lg">{{ section.icon }}</span>{{ section.label }}
+          </button>
+        }
+        <a
+          href="mailto:contact&#64;portfolio.dev"
+          class="mt-4 px-8 py-3 rounded-full text-lg font-semibold
+                 bg-gradient-to-r from-primary to-accent text-white"
+        >
+          Contact Me
+        </a>
+      </div>
+    </div>
+  }
+</header>

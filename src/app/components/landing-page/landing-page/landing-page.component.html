@@ -1,0 +1,10 @@
+<!-- Navigation -->
+<app-landing-page-nav [currentSection]="activeSection()" (navigateTo)="scrollToSection($event)"></app-landing-page-nav>
+
+<!-- Sections Container with snap scroll -->
+<main class="snap-container" #scrollContainer>
+  <app-landing-page-hero-section></app-landing-page-hero-section>
+  <app-landing-page-projects-section></app-landing-page-projects-section>
+  <app-landing-page-skills-section></app-landing-page-skills-section>
+  <app-landing-page-certs-section></app-landing-page-certs-section>
+</main>
